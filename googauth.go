@@ -26,7 +26,7 @@ import (
 // but does not silently ignore them (it forces a mismatch so the code will be rejected).
 func ComputeCode(secret string, value int64) int {
 
-	key, err := base32.StdEncoding.DecodeString(secret)
+	key, err := base32.StdEncoding.WithPadding(base32.NoPadding).DecodeString(secret)
 	if err != nil {
 		return -1
 	}
